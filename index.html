@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Siddharth Dwivedi</title>
+      <link rel="stylesheet" href="styles.css">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
+    </head>
+    <body>
+      <header>
+        <nav>
+          <div class="logo">Siddharth Dwivedi</div>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <section id="about">
+        <div class="container">
+          <div class="section-title">About Me</div>
+          <div class="about-content">
+            <img src="https://source.unsplash.com/random/300x300/?person,programmer" alt="Profile Picture">
+            <div>
+              <p> {JSON.stringify(data.personalInformation.name)}</p>
+              <p>{JSON.stringify(data.personalInformation.email)}</p>
+              <a href={JSON.stringify(data.personalInformation.linkedin)} target="_blank"><i class="fab fa-linkedin"></i></a>
+              <a href={JSON.stringify(data.personalInformation.github)} target="_blank"><i class="fab fa-github"></i></a>
+              <a href={JSON.stringify(data.personalInformation.portfolio)} target="_blank"><i class="fas fa-link"></i></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="education">
+        <div class="container">
+          <div class="section-title">Education</div>
+          <div class="education-content">
+            {data.education.map(edu => (
+              <div key={edu.university} class="education-item">
+                <h3>{edu.degree} - {edu.university}</h3>
+                <p>CGPA: {edu.cgpa} | Year: {edu.year}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <div class="container">
+          <div class="section-title">Experience</div>
+          <div class="experience-content">
+            {data.workHistory.map(exp => (
+              <div key={exp.title} class="experience-item">
+                <h3>{exp.title} - {exp.company}</h3>
+                <p>{exp.location} | {exp.dates}</p>
+                <ul>
+                  {exp.description.map(desc => (
+                    <li key={desc}>{desc}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="container">
+          <div class="section-title">Projects</div>
+          <div class="projects-content">
+            {data.projects.map(proj => (
+              <div key={proj.name} class="project-item">
+                <h3>{proj.name}</h3>
+                <p>Technologies: {proj.technologies.join(", ")}</p>
+                <ul>
+                  {proj.description.map(desc => (
+                    <li key={desc}>{desc}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      <section id="achievements">
+        <div class="container">
+          <div class="section-title">Achievements</div>
+          <div class="achievements-content">
+            {data.achievements.map(ach => (
+              <div key={ach.name} class="achievement-item">
+                <h3>{ach.name}</h3>
+                <p>{ach.details}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="container">
+          <div class="section-title">Skills</div>
+          <div class="skills-content">
+            <h3>Languages:</h3>
+            <ul>
+              {data.technicalSkills.languages.map(lang => <li key={lang}>{lang}</li>)}
+            </ul>
+            <h3>Frameworks/Libraries:</h3>
+            <ul>
+              {data.technicalSkills.frameworks_libraries.map(fw => <li key={fw}>{fw}</li>)}
+            </ul>
+            <h3>Tools/Platforms:</h3>
+            <ul>
+              {data.technicalSkills.tools_platforms.map(tool => <li key={tool}>{tool}</li>)}
+            </ul>
+            <h3>Courses:</h3>
+            <ul>
+              {data.technicalSkills.courses.map(course => <li key={course}>{course}</li>)}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="contact">
+        <div class="container">
+          <div class="section-title">Contact</div>
+          <div class="contact-content">
+            <p>Feel free to reach out!</p>
+            <p>{JSON.stringify(data.personalInformation.email)}</p>
+          </div>
+        </div>
+      </section>
+      <script>
+        AOS.init();
+      </script>
+      <script src="script.js"></script>
+    </body>
+    </html>
